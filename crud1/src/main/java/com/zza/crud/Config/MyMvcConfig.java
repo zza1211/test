@@ -3,7 +3,6 @@ package com.zza.crud.Config;
 import com.zza.crud.component.LoginHandlerInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -17,13 +16,6 @@ public class MyMvcConfig implements WebMvcConfigurer {
     }
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/index.html","/user/register","/","/static/**","/webjars/**","/user/login","/user/register.html");
-    }
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        //静态文件
-        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-        //webjar文件
-        registry.addResourceHandler("/webjars/**").addResourceLocations("/webjars/");
+        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/index.html","/user/register","/","/user/login","/user/register.html");
     }
 }
